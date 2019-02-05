@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour {
     public Text countText;
     public Text winText;
     public GameObject audio;
+    public Button button;
 
     private Rigidbody rb;
     private int count;
@@ -17,6 +18,7 @@ public class PlayerController : MonoBehaviour {
         count = 0;
         setScoreText();
         winText.text = "";
+        button.gameObject.SetActive(false);
     }
     private void FixedUpdate()
     {
@@ -42,6 +44,14 @@ public class PlayerController : MonoBehaviour {
     {
         countText.text = "Score: " + count.ToString();
         if (count >= 10)
+        {
             winText.text = "You win !!";
+            button.gameObject.SetActive(true);
+        }
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }
